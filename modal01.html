@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Modal Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- // Modal 프로젝트 추가 모달 팝업 -->
+  <div class="modal fade show" id="rmrAddModal" tabindex="-1" role="dialog" aria-labelledby="rmrAddModalLabel" aria-hidden="true">
+    <div class="modal" tabindex="-1" role="dialog" style="display:block">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">프로젝트 추가</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        <div class="modal-body">
+          <form id="rmrRegForm" name="rmrRegForm" method="post" action="<c:url value='/rmr/rmrProjRegJson.do'/>">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="openProj" class="col-form-label">프로젝트 내용 불러오기 </label>
+                  <select id="openProj" class="form-control" name="openProjSeq" title="최근 3년 프로젝트 목록">
+                    <option value="0">프로젝트를 선택하세요</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrProjectCd" class="col-form-label">프로젝트ID(*)</label>
+                  <input id="rmrProjectCd" type="text" class="form-control" name="rmrProjectCd" title="프로젝트ID">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrOption" class="col-form-label">유상/무상 구분(*)</label>
+                  <select id="rmrOption" type="text" class="form-control" name="rmrOption" title="유지보수유상무상구분">
+                    <option value="0">유상/무상 선택</option>
+                    <option value="1">유상</option>
+                    <option value="2">무상</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrProjectNm" class="col-form-label">프로젝트명(*)</label>
+                  <input id="rmrProjectNm" type="text" class="form-control" name="rmrProjectNm" title="프로젝트명">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrLocationNm" class="col-form-label">구축 지역</label>
+                  <select id="rmrLocationNm" type="text" class="form-control" name="rmrLocationId" title="구축지역">
+                    <option value="">지역 선택</option>
+                    <option value="SEL">서울특별시</option>
+                    <option value="INC">인천광역시</option>
+                    <option value="TAJ">대전광역시</option>
+                    <option value="KWJ">광주광역시</option>
+                    <option value="TAE">대구광역시</option>
+                    <option value="USN">울산광역시</option>
+                    <option value="PUS">부산광역시</option>
+                    <option value="KYG">경기도</option>
+                    <option value="KAW">강원도</option>
+                    <option value="CCB">충청북도</option>
+                    <option value="CCN">충청남도</option>
+                    <option value="CLB">전라북도</option>
+                    <option value="CLN">전라남도</option>
+                    <option value="KSB">경상북도</option>
+                    <option value="KSN">경상남도</option>
+                    <option value="CHJ">제주특별자치도</option>
+                    <option value="SEJ">세종특별자치시</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">							
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrTerm" class="col-form-label">프로젝트 기간(*)</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="far fa-calendar-alt"></i>
+                      </span>
+                    </div>
+                    <input id="rmrTerm" type="text" class="form-control float-right daterangeinput" name="rmrTerm" title="프로젝트기간">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="hostCompany" class="col-form-label">업체 명</label>
+                  <input id="hostCompany" type="text" class="form-control" name="rmrCompanyNm" title="업체명">
+                </div>
+              </div>
+              <div class="col">							
+                <div class="form-group">
+                  <label for="rmrCustomerKind" class="col-form-label">고객 구분</label>
+                  <select id="rmrCustomerKind" type="text" class="form-control" name="rmrCustomerKindCd" title="고객 구분">
+                    <option value="0">고객 구분 선택</option>
+                    <option value="1">직영</option>
+                    <option value="2">업체</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="reportReceiver" class="col-form-label">점검서 수신인(*)</label>
+                  <input id="reportReceiver" type="text" class="form-control" name="rmrCompanyManageInfo" title="점검서수신인">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrPlId" class="col-form-label">프로젝트 담당자</label>
+                  <select id="rmrPlId" class="form-control" name="rmrPlId" title="프로젝트담당자">
+                    <option value="">담당자 선택</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrMaintainer" class="col-form-label">유지보수 담당자(*)</label>
+                  <select id="rmrMaintainer" class="form-control" name="rmrMaintainerId" title="유지보수담당자">
+                    <option value="">담당자 선택</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="docsSendingCycle" class="col-form-label">점검서 발송 주기</label>
+                  <select id="docsSendingCycle" type="text" class="form-control" name="rmrSendingDocsCycle" title="점검서 발송 주기 ">
+                    <option value="0">발송주기 선택</option>
+                    <option value="" disabled>-----------------------------------------</option>
+                    <option value="" disabled>정기 점검</option>
+                    <option value="" disabled>-----------------------------------------</option>
+                    <option value="1">월초</option>
+                    <option value="2">월말</option>
+                    <option value="3">격월(홀)</option>
+                    <option value="4">격월(짝)</option>
+                    <option value="5">분기</option>
+                    <option value="6">반기</option>
+                    <option value="7">월넘초</option>
+                    <option value="" disabled>-----------------------------------------</option>
+                    <option value="" disabled>수시 점검</option>
+                    <option value="" disabled>-----------------------------------------</option>
+                    <option value="8">케이스By케이스</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrSendKind" class="col-form-label">점검서 제출방법 구분</label>
+                  <select id="rmrSendKind" type="text" class="form-control" name="rmrSendKind" title="점검서제출방법구분">
+                    <option value="0">제출방법 선택</option>
+                    <option value="1">이메일</option>
+                    <option value="2">방문</option>
+                    <option value="3">우편</option>
+                    <option value="4">기타/없음</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="rmrRemoteKind" class="col-form-label">검색시스템 접속 방법</label>
+                  <select id="rmrRemoteKind" type="text" class="form-control" name="rmrRemoteKindCd" title="검색시스템 접속 방법">
+                    <option value="0">접속방법 선택</option>
+                    <option value="1">직접</option>
+                    <option value="2">본사원격툴</option>
+                    <option value="3">담당PC</option>
+                    <option value="4">업체PC</option>
+                    <option value="5">불가</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="wikiInfo" class="col-form-label">WIKI</label>
+                  <textarea class="form-control" id="wikiInfo" name="rmrWikiInfo"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="etcInfo" class="col-form-label">이슈 사항<i class="text-danger fas fa-star"></i></label>
+                  <textarea class="form-control" id="etcInfo" name="rmrEtc01"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="rmrSiteCd" class="col-form-label col-sm-2">주요 사이트<i class="text-warning fas fa-crown"></i></label>
+              <div class="col-sm-3">
+                <select id="rmrSiteCd" class="form-control" type="text" name="rmrSiteCd" title="주요 사이트">
+                  <option value="0">선택하세요</option>
+                  <option value="" disabled>-------------------------------------</option>
+                  <option value="1">주요 사이트1</option>
+                  <option value="2">주요 사이트2</option>
+                </select>
+              </div>
+              <div class="col-sm-7">
+                <input id="rmrSiteFtrsCn" type="text" class="form-control position-static" aria-label="주요 사이트 선정 이유" name="rmrSiteFtrsCn" placeholder="주요 사이트 선정 이유">
+              </div>
+            </div>
+          </form>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary rmrReg">추가</button>
+            <button type="button" class="btn btn-secondary rmrFormClear">Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

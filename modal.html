@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Modal Example</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Bootstrap v.4.4.1 https://getbootstrap.com/docs/4.4/getting-started/download/ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <!-- font-awesome https://cdnjs.com/libraries/font-awesome/5.15.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="container">
+      <h2>Modal Example</h2>
+      <!-- Trigger the modal with a button -->
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#alermSettingModal">Open Modal</button>
+    
+      <!-- Modal -->
+        <div class="modal fade" id="alermSettingModal" tabindex="-1" role="dialog" aria-labelledby="rmrAddModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">알림 설정</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="alarmSetting" name="alarmSetting" method="post" action="" >
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="alarmContent" class="col-form-label">알림 내용</label>
+                                            <input id="alarmContent" type="text" class="form-control" name="alarmContent" title="알림내용">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="alarmDate" class="col-form-label">알림 일자</label>
+                                            <input id="alarmDate" type="date" class="form-control" name="alarmDate" title="알림일자">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="alarmTime" class="col-form-label">알림 시간</label>
+                                            <input id="alarmTime" type="time" class="form-control" name="alarmTime" title="알림시간">                                            
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <!-- <label for="alarmMethod" class="col-form-label">알림 방식</label> -->
+                                            <legend class="col-form-label">알림 방식</legend>
+                                            <div class="form-check form-check-inline">
+                                                <input id="customAlarm" type="radio" >
+                                                <label for="customAlarm" class="col-form-label">커스텀</label>
+
+                                                <input id="crontabAlarm" type="radio" >
+                                                <label for="crontabAlarm" class="col-form-label">크론탭</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">추가</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Clear</button>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        
+    </div>
+      
+</body>
+</html>
